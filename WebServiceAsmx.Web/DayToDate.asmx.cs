@@ -21,7 +21,8 @@ namespace WebServiceAsmx.Web
         private static NextDayDateFinder _dateFinder = new NextDayDateFinder();
 
         [WebMethod]
-        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Xml)]
+        //[ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Xml)]
+        [ScriptMethod(UseHttpGet = true)]
         public string DayNextDate(string dayname)
         {
             DateTime nextDate = _dateFinder.GetNextDate(dayname);
