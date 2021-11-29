@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using WebServiceAsmx.Web.Classes;
 
 namespace WebServiceAsmx.Web
 {
@@ -16,11 +17,13 @@ namespace WebServiceAsmx.Web
     // [System.Web.Script.Services.ScriptService]
     public class DayToDate : System.Web.Services.WebService
     {
+        private static NextDayDateFinder _dateFinder = new NextDayDateFinder();
 
         [WebMethod]
-        public string HelloWorld()
+        public string DayNextDate(string dayname)
         {
-            return "Hello World";
+            DateTime nextDate = _dateFinder.GetNextDate(dayname);
+            return nextDate.ToString(DateFinderConstants.DefaultDateFormat);
         }
     }
 }
